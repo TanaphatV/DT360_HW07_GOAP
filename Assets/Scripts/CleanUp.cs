@@ -16,7 +16,7 @@ public class CleanUp : GAction
     {
         GWorld.Instance.GetWorld().ModifyState("Dead", -1);
         Destroy(target.gameObject);
-        beliefs.ModifyState("exhausted", 0);
+       
         return true;
     }
 }

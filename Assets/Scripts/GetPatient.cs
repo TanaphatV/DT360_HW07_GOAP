@@ -8,7 +8,9 @@ public class GetPatient : GAction {
     public override bool PrePerform() {
 
         // Set our target patient and remove them from the Queue
-        target = GWorld.Instance.RemovePatient();
+        target = GWorld.Instance.RemoveERPatient();
+        if(target == null)
+            target = GWorld.Instance.RemovePatient();
         // Check that we did indeed get a patient
         if (target == null)
             // No patient so return false

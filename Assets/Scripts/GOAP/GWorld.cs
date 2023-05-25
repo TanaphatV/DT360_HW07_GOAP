@@ -9,6 +9,10 @@ public sealed class GWorld {
     private static WorldStates world;
     // Queue of patients
     private static Queue<GameObject> patients;
+
+    private static Queue<GameObject> patients_ER;
+
+    private static Queue<GameObject> patient_Dead;
     // Queue of cubicles
     private static Queue<GameObject> cubicles;
 
@@ -18,6 +22,7 @@ public sealed class GWorld {
         world = new WorldStates();
         // Create patients array
         patients = new Queue<GameObject>();
+        patients_ER = new Queue<GameObject>();
         // Create cubicles array
         cubicles = new Queue<GameObject>();
         // Find all GameObjects that are tagged "Cubicle"
@@ -45,7 +50,10 @@ public sealed class GWorld {
     public void AddPatient(GameObject p) {
 
         // Add the patient to the patients Queue
-        patients.Enqueue(p);
+        if (p.gameObject.CompareTag("Patient_ER"))
+            patients_ER.Enqueue(p);
+        else
+            patients.Enqueue(p);
     }
 
     // Remove patient
@@ -53,6 +61,25 @@ public sealed class GWorld {
 
         if (patients.Count == 0) return null;
         return patients.Dequeue();
+    }
+
+    public GameObject RemoveERPatient()
+    {
+
+        if (patients_ER.Count == 0) return null;
+        return patients_ER.Dequeue();
+    }
+
+    public GameObject RemoveDead()
+    {
+        if (patient_Dead.Count == 0) return null;
+
+        return patient_Dead.Dequeue();
+    }
+
+    public void AddDead(GameObject p)
+    {
+        patient_Dead.Enqueue(p);
     }
 
     // Add cubicle

@@ -14,6 +14,8 @@ public class Nurse : GAgent {
         SubGoal s2 = new SubGoal("rested", 1, false);
         goals.Add(s2, 1);
 
+        SubGoal s3 = new SubGoal("Clean", 1, false);
+        goals.Add(s3, 2);
         // Call the GetTired() method for the first time
         Invoke("GetTired", Random.Range(10.0f, 20.0f));
     }

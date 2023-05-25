@@ -1049,6 +1049,7 @@ GameObject:
   - component: {fileID: 1618912318}
   - component: {fileID: 1618912320}
   - component: {fileID: 8454386370049771602}
+  - component: {fileID: 1618912326}
   m_Layer: 0
   m_Name: Nurse
   m_TagString: Untagged
@@ -1195,6 +1196,31 @@ MonoBehaviour:
     value: 0
   afterEffects:
   - key: rested
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &1618912326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76db6bb89c8e1c342b9759c3e4c8304f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: GoClean
+  cost: 1
+  target: {fileID: 0}
+  targetTag: 
+  duration: 5
+  preConditions:
+  - key: Dead
+    value: 1
+  afterEffects:
+  - key: Clean
     value: 0
   agent: {fileID: 0}
   running: 0

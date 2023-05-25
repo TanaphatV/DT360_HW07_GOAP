@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
 public class Patient : GAgent {
-
+    bool dead = false;
     new void Start() {
 
         // Call the base start
@@ -31,6 +32,23 @@ public class Patient : GAgent {
             {
                 Destroy(gameObject);
             }
+
+            if (c.gameObject.CompareTag("DieSpot") && !dead)
+            {
+                Invoke("Die", Random.Range(1.0f, 4.0f));
+                dead = true;
+            }
+        }
+    }
+
+    void Die()
+    {
+        if(Random.Range(0,100) < 20)//10% chance to die
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+            GWorld.Instance.GetWorld().ModifyState("Dead", 1);
+            GWorld.Instance.AddDead(this.gameObject);
+            gameObject.transform.Rotate(new Vector3(90, 0, 0));
         }
     }
 

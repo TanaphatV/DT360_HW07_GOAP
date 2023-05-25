@@ -9,6 +9,7 @@ TagManager:
   - Patient
   - Patient_ER
   - WaitingArea_ER
+  - DieSpot
   layers:
   - Default
   - TransparentFX

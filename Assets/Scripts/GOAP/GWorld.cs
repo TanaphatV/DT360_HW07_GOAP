@@ -23,6 +23,7 @@ public sealed class GWorld {
         // Create patients array
         patients = new Queue<GameObject>();
         patients_ER = new Queue<GameObject>();
+        patient_Dead = new Queue<GameObject>();
         // Create cubicles array
         cubicles = new Queue<GameObject>();
         // Find all GameObjects that are tagged "Cubicle"
